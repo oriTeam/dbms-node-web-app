@@ -1,18 +1,33 @@
 {
   "name": "dbms-web",
   "version": "1.0.0",
-  "description": "db",
+  "description": "dbms",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon serverStart.js"
   },
   "repository": {
     "type": "git",
-    "url": "http"
+    "url": "https://github.com/vantrong291/dbms-node-web-app"
   },
   "keywords": [
     "firebase"
   ],
   "author": "vantrong291",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "firebase": "^5.6.0",
+    "firebase-admin": "^6.3.0",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "express-generator": "^4.16.0",
+    "nodemon": "^1.18.7"
+  }
 }
