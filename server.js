@@ -7,7 +7,15 @@ app.get('/', function (req, res) {
     console.log("HTTP Get Request");
     res.send("HTTP GET Request");
     // firebase.database().ref('/pvt/subkey').set('dmfnl');
-    firebase.database().ref('/dsd').push({"sdd":{"as": "key"}});
+    let ref = firebase.database().ref('/dsd');
+    ref.orderByKey().on("child_added", function (snapshot) {
+        console.log(snapshot.val);
+    });
+    ref.push();
+    // firebase.database().ref('/dsd').push({
+    //     name: 'Christopher',
+    //     description: 'I eat too much ice cream'
+    //    });;
 });
 
 app.put('/', function (req, res) {
