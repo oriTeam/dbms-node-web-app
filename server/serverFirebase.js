@@ -1,17 +1,31 @@
-import firebase from './firebaseConfig.js';
+import firebase from '../firebaseConfig.js';
 
 var express = require('express');
 var app = express();
+var path = require('path');
+
+var routes = require('../routes/index');
+app.set('views', path.join(__dirname, '../views'));
+app.set('view engine', 'ejs');
+
+
+
+app.use('/staff', routes);
 
 app.get('/', function (req, res) {
     console.log("HTTP Get Request");
     res.send("HTTP GET Request");
     // firebase.database().ref('/pvt/subkey').set('dmfnl');
-    let ref = firebase.database().ref('/dsd');
-    ref.orderByKey().on("child_added", function (snapshot) {
-        console.log(snapshot.val);
+    let ref = firebase.database().ref('/dsd').set("sfsf", function () {
+        console.log("HTTP Get Request");
+
     });
-    ref.push();
+    // console.log(firebase.database().ref('/').child('/dsd'));
+
+    // ref.orderByKey().on("child_added", function (snapshot) {
+    //     console.log(snapshot.val);
+    // });
+    // ref.push();
     // firebase.database().ref('/dsd').push({
     //     name: 'Christopher',
     //     description: 'I eat too much ice cream'
@@ -33,10 +47,10 @@ app.delete('/', function (req, res) {
     res.send("HTTP DELETE Request");
 });
 
-var server = app.listen(3001, function () {
+var serverFirebase = app.listen(3001, function () {
 
-    var host = server.address().address;
-    var port = server.address().port;
+    var host = serverFirebase.address().address;
+    var port = serverFirebase.address().port;
 
     console.log("Example app listening at http://%s:%s", host, port);
 });
@@ -62,4 +76,4 @@ var server = app.listen(3001, function () {
 
 // app.listen(port)
 
-// console.log('RESTful API server started on: ' + port)
+// console.log('RESTful API serverFirebase started on: ' + port)

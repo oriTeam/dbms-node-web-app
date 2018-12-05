@@ -3,11 +3,11 @@ module.exports = function (app) {
     let staffCtl = require('./controllers/staffControllers');
 
     // todoList Routes
-    app.route('/staff')
+    app.route('/api/staff')
         .get(staffCtl.get)
         .post(staffCtl.store);
 
-    app.route('/staff/:staffId')
+    app.route('/api/staff/:staffId')
         .get(staffCtl.detail)
         .put(staffCtl.update)
         .delete(staffCtl.delete);
