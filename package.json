@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "startFirebase": "nodemon serverStartFirebase.js",
-    "startMysql": "nodemon serverStartMysql.js"
+    "start": "nodemon serverStart.js"
   },
   "repository": {
     "type": "git",

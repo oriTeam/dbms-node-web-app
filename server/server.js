@@ -17,8 +17,7 @@ app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 
 
-
-app.use('/staff', route);
+app.use('/', route);
 
 
 app.use(function(req, res) {

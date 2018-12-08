@@ -13,17 +13,18 @@ module.exports = {
         })
     },
     detail: (req, res) => {
-        let sql = 'SELECT * FROM staff WHERE id = ?'
-        db.query(sql, [req.params.staffId], (err, response) => {
+        console.log(req.body);
+        let sql = 'SELECT * FROM staff WHERE staff_id = ?'
+        db.query(sql, [req.params.staff_id], (err, response) => {
             if (err) throw err
             res.json(response[0])
         })
     },
     update: (req, res) => {
         let data = req.body;
-        let Id = req.params.staffId;
-        let sql = 'UPDATE staff SET ? WHERE id = ?'
-        db.query(sql, [data, staffId], (err, response) => {
+        let Id = req.params.staff_id;
+        let sql = 'UPDATE staff SET ? WHERE staff_id = ?'
+        db.query(sql, [data, staff_id], (err, response) => {
             if (err) throw err
             res.json({
                 message: 'Update success!'
@@ -41,8 +42,8 @@ module.exports = {
         })
     },
     delete: (req, res) => {
-        let sql = 'DELETE FROM staff WHERE id = ?'
-        db.query(sql, [req.params.staffId], (err, response) => {
+        let sql = 'DELETE FROM staff WHERE staff_id = ?'
+        db.query(sql, [req.params.staff_id], (err, response) => {
             if (err) throw err
             res.json({
                 message: 'Delete success!'
