@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        <img src="./assets/logo.png">
         <main id="main">
             <div class="wrapper">
                 <fade-transition origin="center" mode="out-in" :duration="250">
@@ -22,12 +21,12 @@
 </script>
 
 <style>
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+    @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+    @import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+    #app, html {
+        font-family: "Varela Round", "Fira Sans", sans-serif;
+        font-size: 16px !important;
     }
+
 </style>

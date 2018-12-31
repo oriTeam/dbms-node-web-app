@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Firebase from '@/views/Firebase'
+import Firebase from '@/views/firebase/Firebase'
 import NotFound from '@/views/NotFound'
-import LogIn from '@/views/LogIn'
-import SignUp from '@/views/SignUp'
+import LogIn from '@/views/firebase/LogIn'
+import SignUp from '@/views/firebase/SignUp'
 
 Vue.use(Router);
 
@@ -12,9 +12,14 @@ var router = new Router({
     mode: 'history',
     routes: [
         {
+            path: '/',
+            redirect: '/firebase/login',
+        },
+        {
             path: '/firebase',
             name: 'Firebase',
             component: Firebase,
+            redirect: '/firebase/login',
             children: [
                 {
                     path: 'login',
