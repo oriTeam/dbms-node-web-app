@@ -6,9 +6,28 @@ const db = require('./../db')
 
 module.exports = {
     get: (req, res) => {
-        let sql = 'SELECT * FROM staff'
+        let sql = 'SELECT * FROM staff LIMIT 1000000'
         db.query(sql, (err, response) => {
             if (err) throw err
+            res.json(response)
+        })
+    },
+    getone: (req, res) => {
+        console.log('1');
+        let sql = 'SELECT * FROM staff LIMIT 1';
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    condition: (req, res) => {
+        console.log(req.body);
+        let sql = 'SELECT * FROM staff WHERE name = ';
+        let name = req.params.name.replace('%20', ' ');
+        sql = sql + name;
+        db.query(sql, (err, response) => {
+            console.log(sql);
+            if (err) throw err;
             res.json(response)
         })
     },

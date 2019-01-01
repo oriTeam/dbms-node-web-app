@@ -1,91 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Firebase Test</title>
     <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Test Firebase</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarCollapse"
-        aria-controls="navbarCollapse"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Test Firebase</a>
+    <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+    >
         <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
-    <div class="container mt-5 pt-5">
-      <button class="btn btn-primary" id="firebase-all-record">
-        Truy vấn 1000000 bản ghi
-      </button>
-      <button class="btn btn-primary" id="firebase-one-record">
-        Truy vấn 1 bản ghi
-      </button>
-      <button class="btn btn-primary" id="firebase-conditional-record">
-        Truy vấn có điều kiện
-      </button>
+    </button>
+</nav>
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-7 px-0">
+            <div class="row mx-0">
+                <div class="col-12">
+                    <div class="row mx-0">
+                        <div class="col-12 px-0"><h4>Truy vấn 1000000 bản ghi</h4><br></div>
+                        <div class="col-12 px-0"><h5><i class="text-danger ml-4">REST: https://dbms-87062.firebaseio
+                                    .com/d/1-999999
+                                    .json</i></h5>
+                        </div>
+                    </div>
+                    <div class="row mx-0 my-3">
+                        <button class="btn btn-primary" id="firebase-all-record">
+                            Thực hiện
+                        </button>
+                    </div>
+                    <hr>
+                </div>
+                <div class="col-12">
+                    <div class="row mx-0">
+                        <div class="col-12 px-0"><h4>Truy vấn 1 bản ghi</h4><br></div>
+                        <div class="col-12 px-0"><h5><i class="text-danger ml-4">REST: https://dbms-87062.firebaseio
+                                    .com/d/1-999999/1.json</i></h5></div>
+                    </div>
+                    <div class="row mx-0 my-3">
+                        <button class="btn btn-info" id="firebase-one-record">
+                            Thực hiện
+                        </button>
+                    </div>
+                    <hr>
+                </div>
+                <div class="col-12">
+                    <div class="row mx-0">
+                        <div class="col-12 px-0"><h4>Truy vấn có điều kiện</h4><br></div>
+                        <div class="col-12 px-0"><h5><i class="text-danger ml-4">REST: https://dbms-87062.firebaseio
+                                    .com/d/1-999999.json?orderBy=%22name%22&equalTo=Tên nhân viên</i></h5></div>
+                    </div>
+                    <div class="row mx-0 mt-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="staff-name-input">Tên Nhân viên muốn truy vấn</label>
+                                <input type="text" class="form-control" id="staff-name-input"
+                                       aria-describedby="emailHelp"
+                                       value="Zoe Young">
+                                <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone-->
+                                <!--else.-->
+                                <!--</small>-->
+                            </div>
+                            <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+                            <button type="button" class="btn btn-primary" id="firebase-conditional-record">
+                                Thực hiện
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-5 px-0">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Kết quả</h4>
+                    <hr>
+                    <div id="result">
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-    ></script>
-    <script>
-      $("#firebase-all-record").on("click", function() {
+
+    <!--<button class="btn btn-primary" id="firebase-all-record">-->
+    <!--Truy vấn 1000000 bản ghi-->
+    <!--</button>-->
+    <!--<button class="btn btn-primary" id="firebase-one-record">-->
+    <!--Truy vấn 1 bản ghi-->
+    <!--</button>-->
+    <!--<button class="btn btn-primary" id="firebase-conditional-record">-->
+    <!--Truy vấn có điều kiện-->
+    <!--</button>-->
+</div>
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+></script>
+<script>
+    $("#firebase-all-record").on("click", function () {
         alert(
-          'Bấm "OK" và chờ kết quả tại console (F12), truy vấn thành công sẽ có thông báo ..'
+            'Bấm "OK" và chờ kết quả tại console (F12), truy vấn thành công sẽ có thông báo ..'
         );
         var start = new Date().getTime();
         $.ajax({
-          url: `https://dbms-87062.firebaseio.com/d/1-999999.json`,
-          success: function(res) {
-            console.log(res);
-            let timing = new Date().getTime() - start;
-            alert("Đã truy vấn xong 1000000 bản ghi. Thời gian truy vấn xấp xỉ: " + timing.toString() + "ms");
-          }
+            url: `https://dbms-87062.firebaseio.com/d/1-999999.json`,
+            success: function (res) {
+                console.log(res);
+                let timing = new Date().getTime() - start;
+                alert("Đã truy vấn xong 1000000 bản ghi. Thời gian truy vấn xấp xỉ: " + timing.toString() + "ms");
+                let result = '';
+                for (const [i, value] of res.entries()) {
+                    if(value != null) {
+                        result += "<p>" + value.id + ": " + value.name + "</p>";
+                        if (i > 100) break;
+                    }
+                }
+                result += "<i>" + "Và 999897 bản ghi khác ..." + "</i><br>";
+                $("#result").html(result);
+                // let result = '';
+                // let i = 0;
+                // for (const key in res) {
+                //     result += "<p>" + key + ": " + res[key]['name'] + "</p>";
+                //     i++;
+                //     if(i>100) break;
+                // };
+                // result += "<i>" + "Và 999897 bản ghi khác ..." + "</i><br>";
+                // $("#result").html(result);
+            }
         });
-      });
-      $("#firebase-one-record").on("click", function() {
+    });
+    $("#firebase-one-record").on("click", function () {
         alert(
-          'Bấm "OK" và chờ kết quả tại console (F12), truy vấn thành công sẽ có thông báo ..'
+            'Bấm "OK" và chờ kết quả tại console (F12), truy vấn thành công sẽ có thông báo ..'
         );
         var start = new Date().getTime();
         $.ajax({
-          url: `https://dbms-87062.firebaseio.com/d/1-999999/1.json`,
-          success: function(res) {
-            console.log(res);
-            let timing = new Date().getTime() - start;
-            alert("Đã truy vấn xong 1 bản ghi. Thời gian truy vấn xấp xỉ: " + timing.toString() + "ms");
-          }
+            url: `https://dbms-87062.firebaseio.com/d/1-999999/1.json`,
+            success: function (res) {
+                    console.log(res);
+                let timing = new Date().getTime() - start;
+                alert("Đã truy vấn xong 1 bản ghi. Thời gian truy vấn xấp xỉ: " + timing.toString() + "ms");
+                let result = '';
+                for (const key in res) {
+                    result += "<p>" + key + ": " + res[key] + "</p>";
+                };
+                $("#result").html(result);
+            }
         });
-      });
-      $("#firebase-conditional-record").on("click", function() {
+    });
+    $("#firebase-conditional-record").on("click", function () {
         alert(
-          'Bấm "OK" và chờ kết quả tại console (F12), truy vấn thành công sẽ có thông báo ..'
+            'Bấm "OK" và chờ kết quả tại console (F12), truy vấn thành công sẽ có thông báo ..'
         );
         var start = new Date().getTime();
+        var name = "\"" + $('#staff-name-input').val() + "\"";
         $.ajax({
-          url: "https://dbms-87062.firebaseio.com/d/1-999999.json?orderBy=%22name%22&equalTo=%22Zoe%20Young%22",
-          success: function(res) {
-            console.log(res);
-            let timing = new Date().getTime() - start;
-            alert("Đã truy vấn xong nhân viên có tên là 'Zoe Young'. Thời gian truy vấn xấp xỉ: " + timing.toString() + "ms");
-          }
+            url: `https://dbms-87062.firebaseio.com/d/1-999999.json?orderBy=%22name%22&equalTo=${name}`,
+            success: function (res) {
+                let timing = new Date().getTime() - start;
+                alert("Đã truy vấn xong nhân viên có tên là 'Zoe Young'. Thời gian truy vấn xấp xỉ: " + timing.toString() + "ms");
+                let result = '';
+                for (const key in res) {
+                    result += "<p>" + key + ": " + res[key]['name'] + "</p>";
+                };
+                $("#result").html(result);
+            }
         });
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>

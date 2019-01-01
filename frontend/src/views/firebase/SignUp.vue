@@ -11,7 +11,7 @@
                         <v-card-text class="bg-light">
                             <v-container>
                                 <v-layout row>
-                                    <v-flex xs12 md7>
+                                    <v-flex xs12 md7 style="padding: 30px;border-right:1px solid #4157b5">
                                         <form @submit.prevent="onSignup">
                                             <v-layout row>
                                                 <v-flex xs12>
@@ -142,11 +142,12 @@
         },
         methods: {
             onSignup() {
-                firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-                    .then(
-                        user => this.$router.replace('dashboard')
-                    )
-                    .catch(
+                firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(res => {
+                    const user = firebase.auth().currentUser;
+                    console.log(user);
+                    alert("Đăng nhập thành công bằng Email");
+                    this.$router.replace('success');
+                }).catch(
                         error => {
                             var errorCode = error.code
                             var errorMessage = error.message
@@ -165,7 +166,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
     button {
-        border-radius: 15px !important;
+        border-radius: 4px !important;
     }
 
     .bg-light {
@@ -186,10 +187,8 @@
         opacity: .7;
         position: absolute;
         left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
         min-height: 647px;
+
     }
 
     .top-z {

@@ -4,6 +4,7 @@ import Firebase from '@/views/firebase/Firebase'
 import NotFound from '@/views/NotFound'
 import LogIn from '@/views/firebase/LogIn'
 import SignUp from '@/views/firebase/SignUp'
+import LoginSuccess from '@/views/firebase/LoginSuccess'
 
 Vue.use(Router);
 
@@ -36,7 +37,15 @@ var router = new Router({
                     meta: {
                         title: 'Đăng ký - Firebase Testing',
                     }
-                }
+                },
+                {
+                    path: 'success',
+                    name: "success",
+                    component: LoginSuccess,
+                    meta: {
+                        title: 'Đăng nhập thành công - Firebase Testing',
+                    }
+                },
             ],
         },
         {
@@ -52,9 +61,10 @@ var router = new Router({
                     path: 'signup',
                     name: 'xSignup',
                     component: SignUp,
-                }
+                },
             ],
         },
+
         {
             path: '*',
             name: 'NotFound',

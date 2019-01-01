@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <app-header></app-header>
         <main id="main">
             <div class="wrapper">
                 <fade-transition origin="center" mode="out-in" :duration="250">
@@ -12,10 +13,15 @@
 
 <script>
     import {FadeTransition} from "vue2-transitions";
+    import AppHeader from "./components/common/Header";
+    import AppFooter from "./components/common/Footer";
+
     export default {
         name: 'App',
         components: {
-            FadeTransition
+            FadeTransition,
+            "app-header": AppHeader,
+            "app-footer": AppFooter
         },
     }
 </script>
@@ -28,5 +34,7 @@
         font-family: "Varela Round", "Fira Sans", sans-serif;
         font-size: 16px !important;
     }
-
+    #main {
+        padding-top: 48px;
+    }
 </style>

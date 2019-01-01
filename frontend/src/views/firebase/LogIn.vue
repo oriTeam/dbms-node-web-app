@@ -9,7 +9,7 @@
                     <v-card-text class="bg-light">
                         <v-container>
                             <v-layout row>
-                                <v-flex xs12 md7>
+                                <v-flex xs12 md7 style="padding: 30px;border-right:1px solid #4157b5">
                                     <form @submit.prevent="onSignin">
                                         <v-layout>
                                             <v-flex text-xs-center style="visibility: hidden">
@@ -116,22 +116,22 @@
         },
         methods: {
             onSignin() {
-                firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-                    .then(
-                        user => this.$router.replace('dashboard')
-                    )
-                    .catch(
-                        error => {
-                            console.log(error)
-                            var errorCode = error.code
-                            var errorMessage = error.message
-                            if (errorCode === 'auth/user-not-found') {
-                                alert('Error: User not found')
-                            } else if (errorCode === 'auth/wrong-password') {
-                                alert('The password is incorrect')
-                            } else alert(errorMessage)
-                        }
-                    )
+                firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
+                    const user = firebase.auth().currentUser;
+                    alert("Đăng nhập thành công bằng Email");
+                    this.$router.replace('success');
+                }).catch(
+                    error => {
+                        console.log(error);
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        if (errorCode === 'auth/user-not-found') {
+                            alert('Error: User not found')
+                        } else if (errorCode === 'auth/wrong-password') {
+                            alert('The password is incorrect')
+                        } else alert(errorMessage)
+                    }
+                )
             }
         }
     }
@@ -140,11 +140,13 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
     button {
-        border-radius: 15px !important;
+        border-radius: 4px !important;
     }
+
     .bg-light {
         background-color: #f5f5f5 !important;
     }
+
     .paralax {
         background-image: url("../../assets/bg02.jpg");
         background-size: cover !important;
@@ -169,6 +171,7 @@
         z-index: 10;
         border-radius: 4px !important;
     }
+
     .v-toolbar {
         border-top-left-radius: 4px !important;
         border-top-right-radius: 4px !important;
